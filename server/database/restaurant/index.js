@@ -9,7 +9,7 @@ mapLocation:{type: String , required:true},
 cuisine:[String],
 restaurantTiming:String,
 contactNumber : Number,
-website:Number,
+website:String,
 popularDishes : [String],
 averageCost : Number,
 amenties:[String],
@@ -23,7 +23,11 @@ menu:{
 },
 reviews:[{  type: mongoose.Types.ObjectId , ref:"Reviews"}],
 photos:{  type: mongoose.Types.ObjectId , ref:"Images"},
-}) ;
+},
+{
+    timestamps:true,
+}
+) ;
 
 
- export  const RestaurantModel= mongoose.model("Restaurants" , RestaurantSchema)
+ export  const RestaurantModel= mongoose.model("Restaurants" , RestaurantSchema);

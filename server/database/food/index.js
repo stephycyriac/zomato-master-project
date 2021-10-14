@@ -23,6 +23,10 @@ restaurants:{
     required:true,
 },
 
-});
+},
+{
+    timestamps:true,
+}
+);
 
 export const FoodModal = mongoose.model("Foods" , FoodSchema);
