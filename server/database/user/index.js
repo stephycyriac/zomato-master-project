@@ -1,6 +1,7 @@
 import mongoose  from "mongoose";
 import bcrypt from "bcrypt";
 import jwt  from "jsonwebtoken";
+
 const UserSchema = new mongoose.Schema({
     fullname :{type:String , required:true},
     email:{type:String , required:true},
@@ -21,9 +22,9 @@ UserSchema.methods.generateJwtToken= function(){
 UserSchema.statics.findByEmailAndPhone = async ({email, phoneNumber }) => {
     // check whether email exist
     
-    const checkUserByEmail = await UserModel.findOne({email});
+    const user = await UserModel.findOne({email});
     const checkUserByPhone = await UserModel.findOne({phoneNumber});
-    if (checkUserByEmail || checkUserByPhone){
+    if (user || checkUserByPhone){
         throw new Error("User already exist..!!!");
     }
     return false;
@@ -31,14 +32,14 @@ UserSchema.statics.findByEmailAndPhone = async ({email, phoneNumber }) => {
 
 UserSchema.statics.findByEmailAndPassword = async ({email, password}) =>{
   // check whether email exist 
-  const checkUserByEmail = await UserModel.findOne({email});
-  if(!checkUserByEmail) throw new Error("User doesnot exists!!");
+  const user = await UserModel.findOne({email});
+  if(!user) throw new Error("User doesnot exists!!");
 
   //compare password
-  const doesPasswordMatch = await bcrypt.compare( password ,checkUserByEmail.password);
+  const doesPasswordMatch = await bcrypt.compare( password ,user.password);
   if(!doesPasswordMatch) throw new Error("Invalid password!!");
 
-  return checkUserByEmail;
+  return user;
 };
 
 
