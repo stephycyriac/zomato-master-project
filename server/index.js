@@ -16,7 +16,10 @@ import Auth from "./API/Auth";
 import Restaurant from "./API/Restaurant";
 import Food from "./API/Food";
 import Images from "./API/Images";
-
+import orders from "./API/orders";
+import reviews from "./API/reviews";
+import User from "./API/User";
+import Menu from "./API/Menu";
 //database connection
 import ConnectDB from "./database/connection";
 
@@ -39,6 +42,10 @@ zomato.use("/auth" , Auth);
 zomato.use("/restaurant" , Restaurant);
 zomato.use("/food" , Food); 
 zomato.use("/image",Images);
+zomato.use("/order",orders);
+zomato.use("/reviews",reviews);
+zomato.use("/user",User);
+zomato.use("/menu",Menu);
 
 zomato.get("/" , (req,res) => res.json({message:"setup success"}));
 
