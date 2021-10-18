@@ -1,10 +1,12 @@
 //libraries
 import express  from "express";
-import passport from "passport";
-import AWS from "aws-sdk";
+import passport from "passport"; 
 import multer from "multer";
 //Database Model
 import {ImageModel} from "../../database/allModels";
+
+//utitlites
+import {s3Upload} from "../../Utils/AWS/s3";
 
 const Router = express.Router();
 
@@ -12,14 +14,8 @@ const Router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({storage});
 
-//AWS S3 bucket config
-const s3Bucket = new AWS.S3({
-accessKeyId:process.env.AWS_S3_ACCESS_KEY,
-secretAccessKey:process.env.AWS_S3_SECRET_KEY,
-region:"ap-south-1",
-});
  
- /*
+/*
 Route :     /image
 des.  :     Uploads given image to S3 bucket and save file link to mongodb
 Params:     none
@@ -33,10 +29,16 @@ try {
 
     //S3 bucket options
     const bucketOptions = {
-      Bucket:"shapeai-intership-zomato",
+      Bucket:"shapeai-intership",
       Key:file.originalname, 
-      Body: file.buffer,
+      Body: file.buffer, 
+      ContentType:file.mimetype,
+      ACL:"public-read", //access control list
     };
+    
+
+const uploadImage= await s3Upload(bucketOptions);
+return res.status(200).json({uploadImage});
 } catch (error) {
     return res.status(500).json({ error: error.message });
 }
