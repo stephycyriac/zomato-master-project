@@ -6,6 +6,9 @@ import passport from "passport";
 //Models
 import {UserModel} from "../../database/user";
 
+//validation
+import { ValidateSignup , ValidateSignin} from "../../validation/auth";
+
 const Router = express.Router();
 
 /*
@@ -16,7 +19,10 @@ Access:     public
 method:     POST
 */
 Router.post("/signup" , async(req,res) => {
+
     try {
+      await ValidateSignup(req.body.credentials);
+
         await UserModel.findByEmailAndPhone(req.body.credentials);
        // save to database
       const newUser =  await UserModel.create (req.body.credentials); //updating existing password with hashed password
@@ -42,7 +48,7 @@ method:     POST
 
 Router.post("/signin" , async(req,res) => {
     try {
-        
+      await ValidateSignin  (req.body.credentials);
       const user =  await UserModel.findByEmailAndPassword(req.body.credentials);
 
     //generate JWT auth token
