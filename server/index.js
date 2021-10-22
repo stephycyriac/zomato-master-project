@@ -9,7 +9,7 @@ import passport from "passport";
 
 //configs
 import googleAuthConfig from "./config/google.config";
-
+import routeConfig from "./config/route.config";
 
 //microservice route
 import Auth from "./API/Auth";
@@ -35,7 +35,7 @@ zomato.use(passport.session());
 
 //passport configuration 
 googleAuthConfig(passport);
-
+routeConfig(passport);
 
 //appication routes
 zomato.use("/auth" , Auth);
@@ -49,7 +49,7 @@ zomato.use("/menu",Menu);
 
 zomato.get("/" , (req,res) => res.json({message:"setup success"}));
 
-zomato.listen(4000,() => ConnectDB()
+zomato.listen(4000,() => ConnectDB() 
 .then(() => console.log("Server is running "))
 .catch(() => console.log("Server is running but database connection failed "))
 );
