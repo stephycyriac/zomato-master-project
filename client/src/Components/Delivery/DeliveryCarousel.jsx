@@ -31,6 +31,7 @@ const categories = [
         image:"https://b.zmtcdn.com/data/dish_images/0d37e90e4ea238490f562405cf444a8e1634731539.png",
         title:"Chaat",
     },
+    
    
 ];
 const settings = {
