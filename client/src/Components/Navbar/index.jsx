@@ -62,7 +62,7 @@ return(
 const Navbar = () => {
 return (
 <>
-<nav className="p-4 flex bg-white items-center w-full shadow-md">
+<nav className="p-4 flex bg-white items-center w-full shadow-md lg:shadow-none">
     <MobileNav/>
     <LargeNav/>
 </nav>
