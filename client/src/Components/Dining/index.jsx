@@ -5,7 +5,7 @@ import DiningCarousel from './DiningCarousel';
 const Dining = () => {
     return (
         <>
-           <div className="w-1/4">
+           <div className="w-full">
            <DiningCarousel/> 
            </div>
         </>

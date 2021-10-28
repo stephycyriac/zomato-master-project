@@ -1,13 +1,32 @@
 import React from 'react';
-
-
+import Slider from 'react-slick';
+import { NextArrow , PrevArrow} from '../CarouselArrow';
 //components
 import PictureCarousalCard from '../PictureCarousal';
 
 const DiningCarousel = () => {
+    const settings = {
+        arrows: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        nextArrow:<NextArrow/>,
+         prevArrow:<PrevArrow/>
+      };
     return (
         <>
-            <PictureCarousalCard/>
+        <div className="w-full">
+        <Slider {...settings}>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        <PictureCarousalCard/>
+        </Slider>
+        </div>
         </>
     );
 };
