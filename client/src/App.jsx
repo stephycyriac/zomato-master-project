@@ -1,15 +1,13 @@
 import { Route,  Redirect}from "react-router-dom";
 
 //HOC
-
 import HomeLayoutHOC from "./HOC/Home.Hoc";
-
-//Components
-import Temp from "./Components/temp";
+import RestaurantLayoutHOC from "./HOC/Restaurant.HOC";
 
 
 //Pages
 import Home from "./Page/Home"; 
+import Temp from "./Components/temp";
 function App() {
   return (
  <>
@@ -18,6 +16,7 @@ function App() {
  </Route>
 
  <HomeLayoutHOC path="/:type" exact component={Home}/>
+ <RestaurantLayoutHOC path="/restaurant/:id" exact component={Temp}/>
  </>
   );
 }
