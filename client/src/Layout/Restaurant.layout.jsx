@@ -1,5 +1,8 @@
 import React from 'react';
-
+import {AiOutlineStar} from "react-icons/ai";
+import {FaDirections} from "react-icons/fa";
+import {BsBookmarkPlus} from "react-icons/bs";
+import {RiShareForwardLine} from "react-icons/ri";
 //components
 import RestaurantNavbar from '../Components/Navbar/RestaurantNavbar';
 import ImageGrid from '../Components/Restaurant/ImageGrid';
@@ -26,10 +29,27 @@ const RestaurantLayout = () => {
        cuisine="Rolls, Fast Food, Desserts, Beverages, Mexican"
        address="Gastronut, Panaji, Goa" />
               {/* ----------------info  button ----------------- */}
-           <InfoButtons/>
+              <div className="my-4 flex flex-wrap gap-3">
+         <InfoButtons isActive>
+          <AiOutlineStar/> Add Review
+         </InfoButtons>
+
+         <InfoButtons>
+          <FaDirections/> Direction
+         </InfoButtons>
+
+         <InfoButtons>
+          <BsBookmarkPlus/>Bookmark
+         </InfoButtons>
+
+
+         <InfoButtons>
+          <RiShareForwardLine/> Share
+         </InfoButtons>
+           </div>
         </div>
        </>
     )
 }
 
-export default RestaurantLayout
+export default RestaurantLayout;
