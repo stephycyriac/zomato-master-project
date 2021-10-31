@@ -48,8 +48,10 @@ const RestaurantLayout = () => {
          <InfoButtons>
           <RiShareForwardLine/> Share
          </InfoButtons>
-           </div>
-           <TabContainer/>
+           </div >
+          <div className="my-6">
+          <TabContainer/>
+          </div>
         </div>
        </>
     )
