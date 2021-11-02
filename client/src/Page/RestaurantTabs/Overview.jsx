@@ -1,14 +1,16 @@
 import React from 'react'
 import { Link ,useParams } from 'react-router-dom';
-import{IoMdArrowDropright} from "react-icons/io";
+import{IoMdArrowDropright , IoMdCopy} from "react-icons/io";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import {FaDirections} from "react-icons/fa"
 //components
 import MenuCollection from '../../Components/Restaurant/MenuCollection';
 import SimilarRestaurantCards from '../../Components/Restaurant/SimilarRestaurantCards';
 import { NextArrow , PrevArrow} from '../../Components/CarouselArrow';
 import ReviewCard from '../../Components/Restaurant/Reviews/ReviewCard';
+import MapView from '../../Components/Restaurant/MapView';
 
 const Overview = () => {
 
@@ -25,7 +27,7 @@ const Overview = () => {
       const ratingChanged = (newRating) => {
         console.log(newRating);
       };
-      const position = [9.9752141219388, 76.29515793941525]
+     
     return (
         <>
             <div className="flex flex-col md:flex-row">
@@ -34,7 +36,7 @@ const Overview = () => {
                   <div className="flex justify-between">
                       <h3 className="text-xl font-medium mt-3">Menu</h3>
                     <Link to={`/restaurant/${id}/menu`}>  
-                    <h4 className="text-zomato-400 flex items-center">See all menus<IoMdArrowDropright/></h4>
+                    <h4 className="text-gray-600 flex items-center">See all menus<IoMdArrowDropright/></h4>
                     </Link>
                     </div>
                     <div className="flex flex-wrap gap-3 mt-3 ">
@@ -76,6 +78,15 @@ const Overview = () => {
                  <h3 className="text-3xl mt-3">Rate your delivery experience</h3>
                  <ReactStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />,
                  </div>
+
+                {/* ---------------------------map view for mobile devices---------------------------- */}
+                 <div className="my-4 w-full md:hidden flex flex-col gap-4">
+                 <MapView title="The Belgian Waffle Co." 
+                 address="61/854-A6, Maneparambil Arcade, Ravipuram, Kochi" 
+                 phno="+916235201753"
+                  mapLocation={[9.9752141219388, 76.29515793941525]}/>  
+                 </div>
+
                  {/* ---------------------------reviews---------------------------- */}
                  <div className="my-4 flex flex-col gap-4">
                  <ReviewCard/>
@@ -86,29 +97,13 @@ const Overview = () => {
               </div>
                     {/* ---------------------------------------map---------------------------- */}
               <aside style={{height:"fit-content"}}
-              className="hidden md:block md:w-4/12 fixed  sticky top-2  rounded-xl shadow-xl">
-                   <div className=" p-2">
-                   <div >
-                   <h3 className="text-2xl font-light mt-3">Call</h3>
-                   <h5 className="text-zomato-400 font-medium">+918530810222</h5>
-                    </div>
-                   <div>
-                   <h3 className="text-2xl font-light mt-3">Direction</h3>
-                   <div className="w-full h-48">
-                   <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-                    <TileLayer
-                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-                    <Marker position={position}>
-                    <Popup>
-                     A pretty CSS3 popup. <br /> Easily customizable.
-                    </Popup>
-                    </Marker>
-                    </MapContainer>
-                     </div>
-                   </div>
-                   </div>
+              className="hidden md:flex md:w-4/12 fixed  sticky top-2  rounded-xl shadow-xl flex flex-col gap-4">
+                 <MapView title="The Belgian Waffle Co." 
+                 address="61/854-A6, Maneparambil Arcade, Ravipuram, Kochi" 
+                 phno="+916235201753"
+                  mapLocation={[9.9752141219388, 76.29515793941525]}/>  
               </aside>
+              
             </div>
         </>
     )
