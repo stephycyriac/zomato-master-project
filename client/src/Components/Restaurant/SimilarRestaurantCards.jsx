@@ -3,7 +3,8 @@ import {AiTwotoneStar} from "react-icons/ai";
 const SimilarRestaurantCards = (props) => {
     return (
         <>
-               <div className="bg-white shadow rounded-lg md:w-64">
+              <div className="mx-2">
+              <div className="bg-white shadow rounded-lg ">
                  <div className="w-full h-24 md:h-48">
                     <img src={props.image}
                          alt="food- chicken"
@@ -29,6 +30,7 @@ const SimilarRestaurantCards = (props) => {
                       <h4>Fast Food, Beverages</h4>
                   </div>
            </div> 
+              </div>
         </>
     )
 }

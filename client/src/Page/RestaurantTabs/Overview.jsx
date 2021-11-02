@@ -2,11 +2,13 @@ import React from 'react'
 import { Link ,useParams } from 'react-router-dom';
 import{IoMdArrowDropright} from "react-icons/io";
 import Slider from "react-slick";
-
+import ReactStars from "react-rating-stars-component";
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 //components
 import MenuCollection from '../../Components/Restaurant/MenuCollection';
 import SimilarRestaurantCards from '../../Components/Restaurant/SimilarRestaurantCards';
 import { NextArrow , PrevArrow} from '../../Components/CarouselArrow';
+import ReviewCard from '../../Components/Restaurant/Reviews/ReviewCard';
 
 const Overview = () => {
 
@@ -15,15 +17,18 @@ const Overview = () => {
         arrows: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         nextArrow:<NextArrow/>,
          prevArrow:<PrevArrow/>
       };
+      const ratingChanged = (newRating) => {
+        console.log(newRating);
+      };
     return (
         <>
             <div className="flex flex-col md:flex-row">
-              <div className="w-full ">
+              <div className="w-full md:w-8/12 ">
                   <h2 className="text-lg md:text-2xl font-semibold mt-3">About this place</h2>
                   <div className="flex justify-between">
                       <h3 className="text-xl font-medium mt-3">Menu</h3>
@@ -56,10 +61,51 @@ const Overview = () => {
                  <Slider {...settings}>
                  <SimilarRestaurantCards image="https://b.zmtcdn.com/data/pictures/chains/5/19154335/b4b2d98de0e7256c16e92729210994a0_featured_v2.jpg?output-format=webp" 
                  title="McCafe by McDonald's" /> 
+                  <SimilarRestaurantCards image="https://b.zmtcdn.com/data/pictures/chains/5/19154335/b4b2d98de0e7256c16e92729210994a0_featured_v2.jpg?output-format=webp" 
+                 title="McCafe by McDonald's" /> 
+                  <SimilarRestaurantCards image="https://b.zmtcdn.com/data/pictures/chains/5/19154335/b4b2d98de0e7256c16e92729210994a0_featured_v2.jpg?output-format=webp" 
+                 title="McCafe by McDonald's" /> 
+                  <SimilarRestaurantCards image="https://b.zmtcdn.com/data/pictures/chains/5/19154335/b4b2d98de0e7256c16e92729210994a0_featured_v2.jpg?output-format=webp" 
+                 title="McCafe by McDonald's" /> 
+                  <SimilarRestaurantCards image="https://b.zmtcdn.com/data/pictures/chains/5/19154335/b4b2d98de0e7256c16e92729210994a0_featured_v2.jpg?output-format=webp" 
+                 title="McCafe by McDonald's" /> 
                  </Slider>
+                 {/* ---------------------------rating---------------------------- */}
+                 <div className="my-4">
+                 <h3 className="text-3xl mt-3">Rate your delivery experience</h3>
+                 <ReactStars count={5} onChange={ratingChanged} size={24} activeColor="#ffd700" />,
+                 </div>
+                 {/* ---------------------------reviews---------------------------- */}
+                 <div className="my-4 flex flex-col gap-4">
+                 <ReviewCard/>
+                 <ReviewCard/>
+                 <ReviewCard/>
+                 <ReviewCard/>
+                 </div>
               </div>
+                    {/* ---------------------------------------map---------------------------- */}
               <aside style={{height:"fit-content"}}
-              className="hidden md:block md:w-2/6 fixed  sticky top-2  shadow-xl"></aside>
+              className="hidden md:block md:w-4/12 fixed  sticky top-2  rounded-xl shadow-xl">
+                   <div className="ml-4">
+                   <div >
+                   <h3 className="text-2xl font-light mt-3">Call</h3>
+                   <h5 className="text-zomato-400 font-medium">+918530810222</h5>
+                    </div>
+                   <div>
+                   <h3 className="text-2xl font-light mt-3">Direction</h3>
+                   <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+                    <TileLayer
+                    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                    <Marker position={position}>
+                    <Popup>
+                     A pretty CSS3 popup. <br /> Easily customizable.
+                    </Popup>
+                    </Marker>
+                    </MapContainer>
+                   </div>
+                   </div>
+              </aside>
             </div>
         </>
     )
