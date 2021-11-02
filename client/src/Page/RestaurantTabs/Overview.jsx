@@ -25,6 +25,7 @@ const Overview = () => {
       const ratingChanged = (newRating) => {
         console.log(newRating);
       };
+      const position = [9.9752141219388, 76.29515793941525]
     return (
         <>
             <div className="flex flex-col md:flex-row">
@@ -86,13 +87,14 @@ const Overview = () => {
                     {/* ---------------------------------------map---------------------------- */}
               <aside style={{height:"fit-content"}}
               className="hidden md:block md:w-4/12 fixed  sticky top-2  rounded-xl shadow-xl">
-                   <div className="ml-4">
+                   <div className=" p-2">
                    <div >
                    <h3 className="text-2xl font-light mt-3">Call</h3>
                    <h5 className="text-zomato-400 font-medium">+918530810222</h5>
                     </div>
                    <div>
                    <h3 className="text-2xl font-light mt-3">Direction</h3>
+                   <div className="w-full h-48">
                    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
                     <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -103,6 +105,7 @@ const Overview = () => {
                     </Popup>
                     </Marker>
                     </MapContainer>
+                     </div>
                    </div>
                    </div>
               </aside>
