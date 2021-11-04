@@ -10,6 +10,7 @@ import Home from "./Page/Home";
 import Temp from "./Components/temp";
 import Overview from "./Page/RestaurantTabs/Overview";
 import OrderOnline from "./Page/RestaurantTabs/OrderOnline";
+import Reviews from "./Page/RestaurantTabs/Reviews";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
  <RestaurantLayoutHOC path="/restaurant/:id/photos" exact component={Temp}/>
  <RestaurantLayoutHOC path="/restaurant/:id/order-online" exact component={OrderOnline}/>
  <RestaurantLayoutHOC path="/restaurant/:id/menu" exact component={Temp}/>
- <RestaurantLayoutHOC path="/restaurant/:id/reviews" exact component={Temp}/>
+ <RestaurantLayoutHOC path="/restaurant/:id/reviews" exact component={Reviews}/>
  </>
   );
 }
