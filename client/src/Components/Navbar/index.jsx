@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import {FaUserAlt} from "react-icons/fa";
 import {HiLocationMarker} from "react-icons/hi";
 import {RiArrowDownSFill , RiArrowUpSFill} from "react-icons/ri";
 import {BsSearch} from "react-icons/bs";
+
+
+//components
+import Signin from "../Auth/Signin";
+import UserDropdown from "./UserDropDown";
+
 //mobile Nav
-const MobileNav = () => {
+const MobileNav = ({ setOpenSignin}) => {
+   
 return(
 <div className="flex w-full items-center justify-between  lg:hidden"> 
 <div className="w-24 ">
@@ -16,9 +23,7 @@ return(
     <button className="bg-zomato-400 text-white rounded-full py-1 px-1">
         Use App
     </button>
-    <span className="border p-2 border-gray-500 text-zomato-400 rounded-full">
-        <FaUserAlt/>
-    </span>
+ <UserDropdown/>
 </div>
 </div>
 );
@@ -60,11 +65,14 @@ return(
 
 
 const Navbar = () => {
+    const [openSignin , setOpenSignin] = useState(false);
+    const [openSignup , setOpenSignup] = useState(false);
 return (
 <>
+<Signin isOpen={openSignin} setIsOpen={setOpenSignin}/>
 <nav className="p-4 flex bg-white items-center w-full shadow-md lg:shadow-none">
-    <MobileNav/>
-    <LargeNav/>
+    <MobileNav Signin = {{openSignin , setOpenSignin}}/>
+    <LargeNav Signin = {{openSignin , setOpenSignin}}/>
 </nav>
 </>
 );
