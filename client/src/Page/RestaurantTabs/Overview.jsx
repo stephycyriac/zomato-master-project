@@ -43,7 +43,8 @@ const Overview = () => {
                     <MenuCollection  
                     menuTitle="Menu" 
                     pages="6 pages"
-                    image="https://b.zmtcdn.com/data/menus/838/18232838/d03b5cfa0ef3e67b843198715dd92f1f.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"/>
+                    image={["https://b.zmtcdn.com/data/menus/838/18232838/d03b5cfa0ef3e67b843198715dd92f1f.jpg?fit=around%7C200%3A200",
+                            "https://b.zmtcdn.com/data/menus/691/50691/b0d205c8eba65d9dbd97b2672e105382.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A "]}/>
                   </div>
                   <h3 className="text-xl font-medium mt-3">Cuisines</h3>
                   <div className="flex flex-wrap gap-3 my-6">
