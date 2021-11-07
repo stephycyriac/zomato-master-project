@@ -54,9 +54,6 @@ const OrderOnline = () => {
                         ]}/>
                     </section>
                 </div>
-                <div>
-                    
-                </div>
             </div>
             <FloatMenuBtn/>
 

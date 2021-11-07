@@ -22,7 +22,7 @@ const FloatMenuBtn = () => {
             </button>
         </div>
         </>
-    )
-}
+    );
+};
 
-export default FloatMenuBtn
+export default FloatMenuBtn;
