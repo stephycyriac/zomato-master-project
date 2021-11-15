@@ -6,7 +6,7 @@ const FoodItem = (props) => {
                    <div className="flex justify-between" >
                   <div>
                   <h5>{props.name}</h5>
-                    <small>Quantity : {parseInt(props.quantity)}kg</small>
+                    <small>Quantity : {parseInt(props.quantity)}</small>
                   </div>
                     <div className="flex flex-col items-end">
                     <h5>₹{parseInt(props.price) * parseInt(props.quantity)}</h5>
