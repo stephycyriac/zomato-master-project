@@ -21,33 +21,6 @@ const Checkout = () => {
      },
 ];
     return (
-        // <div className=" my-3  flex flex-col gap-2 items-center w-full">
-        //      <h1 className="text-xl text-center md:text-2xl font-bold ">Checkout</h1>
-        //      <div className="w-full  rounded-lg shadow-lg bg-white py-3 flex flex-col items-center ">
-        //          <h3 className="font-semibold">Summary</h3>
-        //          <div className="flex flex-col items-center gap-2">
-        //               <h4 className="text-base tracking-wider">ORDER FROM </h4>
-        //             <div className="flex flex-col items-center text-gray-600 w-full">
-        //             <h5>A2B- Adyar Ananda Bhavan</h5>
-        //               <small>Elk Hill, Ooty</small>
-        //             </div>
-        //             <div className=" flex flex-col  gap-2 w-full ">
-        //               <FoodItem name="Pizza" quantity={3} price={150}/>
-        //               <FoodItem name="Pizza" quantity={3} price={150}/>
-        //               <FoodItem name="Pizza" quantity={3} price={150}/>
-        //             </div>
-        //             <div className="  flex flex-col  gap-3 w-full ">
-        //              <h4 className="text-xl font-semibold">Choose Address</h4>
-        //                 <AddressList address={address}/>
-        //             </div>
-        //             <button className=" my-4 md:my-8 w-full px-4   h-14 font-medium text-white text-lg bg-zomato-400 rounded-lg">
-        //            Pay Now
-        //          </button>
-        //          </div>
-              
-        //      </div>
-
-        // </div>
         <div className="my-3 flex flex-col gap-3 items-center">
         <h1 className="text-xl text-center md:text-2xl font-bold">Checkout</h1>
         <div className="w-full md:w-3/5 rounded-lg  py-3 shadow-lg bg-white flex flex-col items-center">
